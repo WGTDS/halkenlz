@@ -1,0 +1,65 @@
+... and maybe some rambling, too.
+
+(*) 1,512 segments successfully audited for accurate LZ reproduction.
+
+
+
+HAL's LZ configuration utilizes variable length information centered around
+the capacities of a 16-bit dictionary and 8-bit lengths.
+
+Respective minimums and maximums, respectively:
+1 ... 65,535    ((1 << 16) - 1)     (0x0001 ... 0xFFFF)
+3 ... 255       ((1 <<  8) - 1)     (0x0003 ... 0x00FF)
+
+
+
+"vpk0" [0x76706B30] represents the FourCC identifying encoded blocks of data.
+(magic is absent/unidentified in Kirby 64, but the routines are definitely
+ present within the ROM!)
+
+Whether or not the format had an extensive implementation in further software
+lineups from HAL is to be determined. As of present, 4 N64 titles, and a
+variety of AGB products supporting the e-Reader are known to use the decoding
+algorithm.
+
+
+
+There exists a peculiar void routine within HAL's N64 vpk0 enriched ROMs
+that have no apparent caller under any circumstance.
+It has notable similarities to the vpk0 decoding routine with its
+operations on values of 0x20 being subtracted with variables and being
+masked with a value of 0x1F.
+Though, any perceived similarities are purely speculative, furthermore,
+I've no idea why the preliminary loop breaks after an incremented variable
+reaches a value of 0x3F0 seeing as I can't associate it with any logical
+deduction from known semantics.
+
+
+
+
+The way this format has been used implies a general purpose, compared to,
+Nintendo EAD and their SLI LZ format engineered for graphics & vertex data.
+
+Despite being an apparent adaptation of the Deflate algorithm, Gzip still
+outperforms vpk0's compression ratio even on the fastest setting "-1".
+
+
+
+It's a bit surprising there aren't any e-Reader SDKs floating around like
+the N64 SDK and related tools, especially, anything related to HAL considering
+their stature alongside Nintendo.
+
+However, the AGB SDK may yield some clues considering I was able to make some
+tweaks to the LZ routine used in "agbcomp" to replicate 1:1 LZ data siphoned
+from preexisting vpk0 data segments.
+Or maybe even the Revolution SDK's "ntcompress".
+
+
+
+The final stretch is figuring out the Huffman portion of things,
+then any concerns about performance optimization can begin (maybe).
+(the LZ search routine used in "agbcomp" is horribly slow,
+ but at least it works....)
+
+
+

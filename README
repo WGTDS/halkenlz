@@ -1,0 +1,56 @@
+#####################################################################
+
+    HALKEN LZ
+    v1.00
+
+    "White Guy That Don't Smile"
+    2022/01/13, Thursday, January 13th; 1750 HOURS
+
+#####################################################################
+
+Description:
+
+    Herein lies a simplified, easy to read skeleton of the
+    Lempel-Ziv routine found in the Game Boy Advance SDK tool,
+    "agbcomp", using a mix of hypothetical and theoretical
+    alterations best suited to reproduce the relevant subset of
+    data from decoded "vpk0" data samples.
+
+#####################################################################
+
+Motive:
+
+    Nearly 20 years ago, an individual under the alias "CaitSith2"
+    successfully reverse-engineered the vpk0 format used by the
+    Nintendo e-Reader for the Game Boy Advance.
+
+    This development is certainly no small feat, however, some
+    individuals are curious as to whether or not they themselves
+    can <fully> reverse-engineer the format, myself included,
+    focusing on 1:1 accuracy.
+
+    As of February 2022, only the LZ portion of the format has
+    been replicated. The Huffman format has yet to be cracked.
+
+#####################################################################
+
+Special Mentions:
+
+    HAL Laboratory:
+        Japan's IBM, to say the least.
+        Their vpk0 format keeps me up at night knowing I may never
+        be able to deduce their Huffman method....
+
+    CaitSith2:
+        Big Brain behind the e-Reader homebrew tools.
+        (After comparing your code with what was reproduced via
+         Ghidra using a dumped e-Reader ROM for reference, the
+         similarities are borderline identical despite the
+         15 year gap. Tee-hee.)
+
+    tehzz:
+        Recognized for also expressing interest in fully
+        reverse-engineering HAL's intriguing rendition of the
+        Deflate algorithm.
+
+#####################################################################
